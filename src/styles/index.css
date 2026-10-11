@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   DESIGN TOKENS - edit here to re-theme the whole site.
+   Colours are RGB triplets so Tailwind opacity utilities work.
+------------------------------------------------------------------- */
+:root {
+  --c-ivory: 246 241 232;
+  --c-sand: 233 223 205;
+  --c-taupe: 138 127 112;
+  --c-bronze: 158 118 66;
+  --c-bronze-dark: 120 86 44;
+  --c-charcoal: 38 35 31;
+  --c-ink: 63 58 52;
+  --c-line: 222 211 193;
+
+  --space-section: clamp(4.5rem, 9vw, 8rem);
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 10px 30px -14px rgb(38 35 31 / 0.25);
+  --shadow-lift: 0 30px 60px -28px rgb(38 35 31 / 0.4);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --transition: 300ms var(--ease);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  @apply bg-ivory font-sans text-ink antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 {
+  @apply font-serif text-charcoal;
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--c-bronze));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12; }
+  .section { padding-block: var(--space-section); }
+  .eyebrow { @apply text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-bronze-dark; }
+  .h-display { @apply font-serif text-[2.6rem] font-medium leading-[1.05] sm:text-6xl lg:text-[4.25rem]; }
+  .h-section { @apply font-serif text-[2rem] font-medium leading-[1.1] sm:text-5xl; }
+
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 px-6 py-3 text-sm font-semibold tracking-wide transition disabled:cursor-not-allowed disabled:opacity-60;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+  }
+  .btn-primary { @apply bg-charcoal text-ivory hover:bg-bronze-dark; }
+  .btn-bronze { @apply bg-bronze text-white hover:bg-bronze-dark; }
+  .btn-outline { @apply border border-charcoal/30 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-ivory; }
+  .btn-light { @apply bg-ivory text-charcoal hover:bg-sand; }
+  .btn-ghost-light { @apply border border-ivory/50 text-ivory hover:bg-ivory hover:text-charcoal; }
+  .link-arrow { @apply inline-flex items-center gap-2 text-sm font-semibold text-charcoal underline-offset-4 hover:text-bronze-dark hover:underline; }
+
+  .field-label { @apply mb-1.5 block text-[0.8rem] font-medium text-charcoal; }
+  .field-input {
+    @apply w-full border border-line bg-white/80 px-3.5 py-3 text-[0.95rem] text-charcoal placeholder:text-taupe/70 focus:border-bronze;
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+  .field-input:focus { outline: none; box-shadow: 0 0 0 3px rgb(var(--c-bronze) / 0.2); }
+  .field-input[aria-invalid='true'] { @apply border-red-700; }
+  .field-error { @apply mt-1 text-[0.78rem] text-red-800; }
+
+  .chip {
+    @apply inline-flex min-h-[40px] items-center border border-line bg-transparent px-4 py-2 text-[0.82rem] font-medium text-ink transition hover:border-charcoal;
+    border-radius: 999px;
+  }
+  .chip[aria-pressed='true'] { @apply border-charcoal bg-charcoal text-ivory; }
+}
+
+.hide-scrollbar { scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Honeypot: visually hidden, still in the DOM for bots */
+.hp-field { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
