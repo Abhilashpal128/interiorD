@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://www.example.com/sitemap.xml
+# Add a Sitemap URL by running npm run sitemap with SITE_URL set to the final domain.

@@ -12,11 +12,11 @@ interface Props {
 export function EnquiryModal({ open, prefill, onClose }: Props) {
   const calc = prefill.calculatorInputs;
   return (
-    <Modal open={open} onClose={onClose} title="Book your free consultation" size="lg">
+    <Modal open={open} onClose={onClose} title="Enquire with S&D Build Solutions" size="lg">
       <div className="p-6 sm:p-10">
-        <p className="eyebrow">Free consultation</p>
-        <h2 className="mt-2 font-serif text-3xl sm:text-4xl">Tell us about your home</h2>
-        <p className="mt-2 text-sm text-ink/80">Share a few details and our team will review your enquiry.</p>
+        <p className="eyebrow">S&amp;D Build Solutions</p>
+        <h2 className="mt-2 font-serif text-3xl sm:text-4xl">Tell us about your project</h2>
+        <p className="mt-2 text-sm text-ink/80">Share a few details with Shailesh &amp; Dinesh.</p>
         {(prefill.projectTitle || calc) && (
           <ul className="mt-4 flex flex-wrap gap-2 text-xs" aria-label="Details carried over">
             {prefill.projectTitle && <li className="rounded-full bg-sand px-3 py-1.5 text-charcoal">Inspired by: {prefill.projectTitle}</li>}

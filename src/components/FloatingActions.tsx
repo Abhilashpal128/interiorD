@@ -1,24 +1,24 @@
-import { MessageCircle, PenLine } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Phone, ArrowUpRight } from 'lucide-react';
 import { contact } from '../config/site';
 import { useEnquiry } from '../context/EnquiryContext';
-import { whatsappUrl } from '../utils/format';
 
 export function FloatingActions() {
   const { openEnquiry } = useEnquiry();
+  const { pathname } = useLocation();
+  const [pastHero, setPastHero] = useState(false);
+  useEffect(() => {
+    const update = () => setPastHero(window.scrollY > window.innerHeight * 0.75);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, [pathname]);
+  if (pathname === '/' && !pastHero) return null;
   return (
-    <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-3 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6">
-      <button type="button" onClick={() => openEnquiry({ source: 'Floating enquiry button' })} className="btn btn-primary !min-h-[48px] gap-2 rounded-full !px-5 shadow-lift" aria-label="Open enquiry form">
-        <PenLine size={18} /> <span className="hidden sm:inline">Free Enquiry</span><span className="sm:hidden">Enquire</span>
-      </button>
-      <a
-        href={whatsappUrl(contact.whatsappNumber, contact.whatsappMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="grid h-14 w-14 place-items-center rounded-full bg-[#1f9d57] text-white shadow-lift transition hover:scale-105 hover:bg-[#188046]"
-      >
-        <MessageCircle size={26} />
-      </a>
+    <div className="floating-actions">
+      <a href={`tel:${contact.phoneTel}`} aria-label={`Call S&D Build Solutions on ${contact.phoneDisplay}`} className="floating-call"><Phone size={19} /></a>
+      <button type="button" onClick={() => openEnquiry({ source: 'Floating enquiry button' })} aria-label="Open enquiry form" className="floating-enquiry">Enquire <ArrowUpRight size={17} /></button>
     </div>
   );
 }

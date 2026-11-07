@@ -1,22 +1,14 @@
 import { useSeo } from '../hooks/useSeo';
 import { faqs } from '../data/faqs';
 import { company, contact, seo } from '../config/site';
-import { IMG } from '../data/images';
+import { photos } from '../data/media';
 import { Hero } from '../sections/Hero';
-import { LeadCapture } from '../sections/LeadCapture';
-import { TrustStrip } from '../sections/TrustStrip';
 import { Services } from '../sections/Services';
 import { Designs } from '../sections/Designs';
 import { Portfolio } from '../sections/Portfolio';
-import { BeforeAfterSection } from '../sections/BeforeAfterSection';
+import { Walkthroughs } from '../sections/Walkthroughs';
 import { Process } from '../sections/Process';
-import { RoomSelector } from '../sections/RoomSelector';
 import { BudgetEstimator } from '../sections/BudgetEstimator';
-import { Materials } from '../sections/Materials';
-import { WhyUs } from '../sections/WhyUs';
-import { Testimonials } from '../sections/Testimonials';
-import { Journey } from '../sections/Journey';
-import { ConsultCTA } from '../sections/ConsultCTA';
 import { FAQ } from '../sections/FAQ';
 import { About } from '../sections/About';
 import { Contact } from '../sections/Contact';
@@ -35,30 +27,25 @@ const businessSchema = {
   url: company.siteUrl,
   telephone: contact.phoneTel,
   email: contact.email,
-  address: { '@type': 'PostalAddress', streetAddress: contact.addressLines.join(', ') },
+  description: company.description,
+  logo: new URL(company.logoImage, company.siteUrl).href,
+  address: { '@type': 'PostalAddress', ...contact.postalAddress },
+  contactPoint: contact.phones.map((phone) => ({ '@type': 'ContactPoint', telephone: phone.tel, contactType: 'customer enquiries' })),
 };
 
 export default function HomePage() {
-  useSeo({ path: '/', image: IMG.hero, jsonLd: seo.enableLocalBusinessSchema ? [faqSchema, businessSchema] : [faqSchema] });
+  useSeo({ path: '/', image: photos.livingDining.src, jsonLd: seo.enableLocalBusinessSchema ? [faqSchema, businessSchema] : [faqSchema] });
   return (
     <>
       <Hero />
-      <LeadCapture />
-      <TrustStrip />
-      <Services />
-      <Designs />
-      <Portfolio />
-      <BeforeAfterSection />
-      <Process />
-      <RoomSelector />
-      <BudgetEstimator />
-      <Materials />
-      <WhyUs />
-      <Testimonials />
-      <Journey />
-      <ConsultCTA />
-      <FAQ />
       <About />
+      <Portfolio />
+      <Walkthroughs />
+      <Services />
+      <Process />
+      <Designs />
+      <BudgetEstimator />
+      <FAQ />
       <Contact />
     </>
   );

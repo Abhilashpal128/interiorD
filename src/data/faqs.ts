@@ -1,15 +1,13 @@
 import type { Faq } from '../types';
+import { company, contact } from '../config/site';
 
-/** DEMO FAQs - update answers so they match the business's real policies. Used on the page AND for FAQ schema. */
 export const faqs: Faq[] = [
-  { q: 'How much does a complete home interior cost?', a: 'Cost depends on the size of your home, the scope of work and the level of finish. Use our budget estimator for an indicative range, then book a free consultation for a detailed, itemised quotation based on your actual requirements.' },
-  { q: 'How long does the project take?', a: 'Timelines depend on scope and size. A modular kitchen typically takes fewer weeks than a complete home. We share a written milestone schedule with the quotation so you know what to expect.' },
-  { q: 'Do you provide 3D designs?', a: 'Yes. We prepare floor plans and 3D visuals so you can review layouts, finishes and colours before production begins.' },
-  { q: 'Can I customise the design?', a: 'Absolutely. Every design is developed around your requirements. You can adjust layouts, finishes, storage and styling during the design stage.' },
-  { q: 'Do you provide modular kitchens?', a: 'Yes. We design and install modular kitchens in a range of layouts and finishes, with options for hardware and counter materials.' },
-  { q: 'Can I choose my own materials?', a: 'Yes. We guide you through options at different price points, and you can approve materials before they are ordered.' },
-  { q: 'Do you provide turnkey construction?', a: 'We offer turnkey construction in selected locations. Share your plot or project details in an enquiry and we will confirm what is possible.' },
-  { q: 'How does the quotation process work?', a: 'After the consultation and site visit, we prepare a line-item quotation with specifications. Once you approve the design, we confirm the final quotation and schedule.' },
-  { q: 'Is a site visit available?', a: 'Yes. A site visit is part of our process so we can measure the space and understand your requirements. Request one through the enquiry form.' },
-  { q: 'What happens after I submit an enquiry?', a: 'Your enquiry is recorded and our team reviews it. If you provided an email address you will receive an acknowledgement, and a team member will contact you using the details you shared.' },
+  { q: 'What services does S&D Build Solutions offer?', a: 'Our services include construction and civil work, home renovation, interior work, tiles, marble and granite, furniture and carpentry, plumbing and electrical, aluminium, glass and uPVC work, and painting and finishing.' },
+  { q: 'Where is S&D Build Solutions based?', a: 'We are based in Kandivali (E), Lokhandwala, Mumbai - 400101. Share your project location with us to discuss availability.' },
+  { q: 'How can I contact Shailesh & Dinesh?', a: `Call ${contact.phones[0]!.display} or ${contact.phones[1]!.display}, or email ${contact.email}. You can also use the enquiry form on this website.` },
+  { q: 'How long does the project take?', a: 'The timeline depends on the work, site conditions and materials. Discuss your requirements and preferred schedule with Shailesh & Dinesh so the timeline can be agreed for your project.' },
+  { q: 'Can I enquire about a single service?', a: 'Yes. Choose the relevant service in the enquiry form and describe what you need, whether it is carpentry, painting, stone work or another service listed on our card.' },
+  { q: 'What should I share when requesting a quotation?', a: 'Include your location, property type, approximate area, scope of work, material preferences and preferred start date. These details help us understand the project before discussing a quotation.' },
+  { q: 'Is the budget estimator a final quotation?', a: 'No. The estimator uses illustrative rates to help you explore a possible budget. A project quotation depends on the agreed scope, materials and site requirements.' },
+  { q: 'What happens after I submit an enquiry?', a: `Your details are sent to ${company.name} for review. Shailesh & Dinesh can contact you using the phone number or email address you provide.` },
 ];

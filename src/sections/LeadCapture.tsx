@@ -10,7 +10,7 @@ export function LeadCapture() {
     <section id="enquire" aria-labelledby="enquire-title" className="relative bg-charcoal pb-20 pt-16 sm:pb-24">
       <div className="container-x grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <Reveal className="text-ivory">
-          <p className="eyebrow !text-sand">Free consultation</p>
+          <p className="eyebrow !text-sand">Project enquiry</p>
           <h2 id="enquire-title" className="h-section mt-3 !text-ivory">Start with a conversation, not a commitment.</h2>
           <p className="mt-4 max-w-md text-sand/90">Tell us about your home and we will get back to you with the next steps. Your details are only used to respond to your enquiry.</p>
           <ul className="mt-8 space-y-5">
@@ -32,7 +32,7 @@ export function LeadCapture() {
           </a>
         </Reveal>
         <Reveal delay={0.1} className="bg-ivory p-6 shadow-lift sm:p-9">
-          <h3 className="mb-5 font-serif text-3xl text-charcoal">Book your free consultation</h3>
+          <h3 className="mb-5 font-serif text-3xl text-charcoal">Speak with Shailesh & Dinesh</h3>
           <EnquiryForm prefill={{ source: 'Lead capture form (home)' }} idPrefix="lead" />
         </Reveal>
       </div>

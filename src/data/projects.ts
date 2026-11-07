@@ -1,96 +1,73 @@
 import type { Project } from '../types';
-import { IMG } from './images';
+import { photos as p } from './media';
 
-/**
- * DEMO PROJECTS - illustrative only, NOT real client work. Replace with genuine completed projects
- * (with the owner's permission) and real photographs before launch.
- */
+export const projectCategories = ['All', 'Interiors', 'Carpentry', 'Windows & Glass', 'Site Work'] as const;
+
+// Work collections from the supplied media. Site names, costs, areas and timelines were not supplied.
 export const projects: Project[] = [
   {
-    id: 'p1', slug: 'skyline-3bhk-apartment', title: 'Skyline 3BHK Apartment', location: 'Mumbai', propertyType: 'Apartment', areaSqft: 1450,
-    style: 'Contemporary', budgetRange: '₹18 - 24 lakh', duration: '14 weeks', category: 'Apartment', cover: IMG.living1,
-    gallery: [IMG.living1, IMG.kitchen1, IMG.bedroom1, IMG.dining2],
-    description: 'A family apartment reworked for open living, with a concealed utility zone, full-height storage and warm layered lighting.',
-    scope: ['Space planning', 'Modular kitchen', 'Wardrobes', 'False ceiling & lighting', 'Furniture & decor'],
+    id: 'living-dining', slug: 'sculpted-living-and-dining', title: 'Sculpted living & dining',
+    category: 'Interiors', service: 'Interior Work', style: 'Layered light & detail', stage: 'Interior showcase',
+    cover: p.livingDining.src, gallery: [p.livingDining.src], videoIds: ['living-dining'],
+    description: 'A living and dining space brought together by pale wall panelling, soft seating and decorative lighting. The illuminated sculpted feature wall and patterned entrance floor give the room its character.',
+    scope: ['Living and dining details', 'Decorative wall panelling', 'Ceiling and lighting details', 'Entrance and floor finishes'],
   },
   {
-    id: 'p2', slug: 'garden-villa-pune', title: 'Garden Villa Interiors', location: 'Pune', propertyType: 'Villa', areaSqft: 3200,
-    style: 'Indian Contemporary', budgetRange: '₹55 - 70 lakh', duration: '24 weeks', category: 'Villa', cover: IMG.house1,
-    gallery: [IMG.house1, IMG.living3, IMG.dining1, IMG.bedroom2],
-    description: 'A three-level villa where natural stone, teak veneer and brass details connect indoor and outdoor living.',
-    scope: ['Complete interiors', 'Custom furniture', 'Lighting design', 'Landscape coordination'],
+    id: 'green-bedroom', slug: 'green-and-grain-bedroom', title: 'Green, grain & quiet detail',
+    category: 'Interiors', service: 'Interior Work', style: 'Textured bedroom', stage: 'Interior showcase',
+    cover: p.greenBedroom.src, gallery: [p.greenBedroom.src, p.creamWardrobe.src],
+    description: 'Green upholstery meets a bold veined feature panel and vertical wood-tone detailing. Cream wardrobes and a striped seat add a lighter contrast to this bedroom interior.',
+    scope: ['Upholstered headboard', 'Feature wall and vertical detailing', 'Panelled wardrobe doors', 'Bedroom furniture'],
   },
   {
-    id: 'p3', slug: 'island-kitchen-bengaluru', title: 'Island Kitchen Remodel', location: 'Bengaluru', propertyType: 'Apartment', areaSqft: 220,
-    style: 'Modern', budgetRange: '₹9 - 12 lakh', duration: '6 weeks', category: 'Kitchen', cover: IMG.kitchen3,
-    gallery: [IMG.kitchen3, IMG.kitchen4, IMG.kitchen5],
-    description: 'A closed kitchen opened up with an island, tall pantry units and integrated appliances.',
-    scope: ['Layout change', 'Modular kitchen', 'Counter & backsplash', 'Lighting'],
+    id: 'compact-lounge', slug: 'teal-storage-compact-lounge', title: 'A place for everything',
+    category: 'Carpentry', service: 'Furniture & Carpentry', style: 'Compact lounge', stage: 'Furniture showcase',
+    cover: p.tealStorage.src, gallery: [p.tealStorage.src, p.lounge.src], videoIds: ['compact-lounge'],
+    description: 'Teal cabinets frame a cream sofa, using the walls for storage while keeping the centre of the room open. Arched door details, round handles and a glass-top coffee table bring the composition together.',
+    scope: ['Built-in storage', 'Overhead cabinets', 'Arched cabinet fronts', 'Seating and furniture arrangement'],
   },
   {
-    id: 'p4', slug: 'compact-1bhk-thane', title: 'Compact 1BHK Makeover', location: 'Thane', propertyType: 'Apartment', areaSqft: 620,
-    style: 'Minimalist', budgetRange: '₹5 - 7 lakh', duration: '8 weeks', category: 'Apartment', cover: IMG.apt1,
-    gallery: [IMG.apt1, IMG.apt3, IMG.bedroom4],
-    description: 'Multipurpose furniture and loft storage give a small home room to breathe.',
-    scope: ['Space planning', 'Wardrobes', 'Kitchen', 'Furniture'],
+    id: 'panoramic-windows', slug: 'panoramic-sliding-windows', title: 'Open up to the light',
+    category: 'Windows & Glass', service: 'Aluminium, Glass & uPVC Work', style: 'Sliding windows', stage: 'Installation photographs',
+    cover: p.sunset.src, gallery: [p.sunset.src, p.livingWindow.src, p.bedroomWindow.src, p.sunsetPhone.src],
+    description: 'Wide sliding windows bring daylight into rooms during their interior fit-out. This collection shows the openings from different angles, including the evening light across the living area.',
+    scope: ['Wide window openings', 'Sliding frame installation', 'Glazed panels', 'Interior installation details'],
   },
   {
-    id: 'p5', slug: 'heritage-bungalow-renovation', title: 'Bungalow Renovation', location: 'Ahmedabad', propertyType: 'Independent House', areaSqft: 2400,
-    style: 'Warm & Earthy', budgetRange: '₹35 - 45 lakh', duration: '20 weeks', category: 'Renovation', cover: IMG.house4,
-    gallery: [IMG.house4, IMG.living2, IMG.bedroom2, IMG.bath1],
-    description: 'A tired 1990s bungalow reconfigured with new flooring, joinery and lighting while keeping its character.',
-    scope: ['Civil changes', 'Flooring', 'Joinery', 'Electrical', 'Painting'],
+    id: 'custom-beds', slug: 'custom-beds-and-bedside-details', title: 'Made around everyday living',
+    category: 'Carpentry', service: 'Furniture & Carpentry', style: 'Bedroom carpentry', stage: 'Furniture installation',
+    cover: p.bedside.src, gallery: [p.bedside.src, p.woodBed.src],
+    description: 'A collection of bedroom carpentry details: rounded bed-frame corners, coordinated wood-grain headboards and a floating bedside drawer with a softly lit backdrop.',
+    scope: ['Custom bed frames', 'Coordinated headboards', 'Floating bedside storage', 'Wood-grain finish details'],
   },
   {
-    id: 'p6', slug: 'workspace-studio-gurugram', title: 'Studio Office Fit-out', location: 'Gurugram', propertyType: 'Office', areaSqft: 1800,
-    style: 'Contemporary', budgetRange: '₹28 - 36 lakh', duration: '12 weeks', category: 'Office', cover: IMG.office1,
-    gallery: [IMG.office1, IMG.office2],
-    description: 'An open workspace with acoustic zones, a hospitality-style pantry and flexible meeting rooms.',
-    scope: ['Space planning', 'Workstations', 'Acoustic treatment', 'Lighting'],
+    id: 'dressing-storage', slug: 'wardrobe-and-dressing-niche', title: 'Storage with a personal corner',
+    category: 'Carpentry', service: 'Furniture & Carpentry', style: 'Wardrobe & dressing', stage: 'Furniture showcase',
+    cover: p.dressingWardrobe.src, gallery: [p.dressingWardrobe.src],
+    description: 'A full-height wardrobe composition with a central dressing niche. Pale panelled fronts, drawers and gold-tone handles surround a botanical accent that gives the storage wall a focal point.',
+    scope: ['Full-height wardrobes', 'Integrated dressing niche', 'Drawer storage', 'Panel and handle detailing'],
   },
   {
-    id: 'p7', slug: 'sea-view-penthouse', title: 'Sea-View Penthouse', location: 'Mumbai', propertyType: 'Apartment', areaSqft: 2800,
-    style: 'Contemporary Luxury', budgetRange: '₹80 lakh - 1.1 crore', duration: '28 weeks', category: 'Apartment', cover: IMG.living3,
-    gallery: [IMG.living3, IMG.dining1, IMG.bedroom1, IMG.bath2],
-    description: 'Marble, brass and bespoke joinery frame the view in a penthouse designed for entertaining.',
-    scope: ['Complete interiors', 'Custom furniture', 'Stone work', 'Automation'],
+    id: 'grid-glazing', slug: 'grid-glazing-and-opening-panels', title: 'A frame for the view',
+    category: 'Windows & Glass', service: 'Aluminium, Glass & uPVC Work', style: 'Grid-pattern glazing', stage: 'Installation photographs',
+    cover: p.openGlazing.src, gallery: [p.openGlazing.src, p.terraceGlazing.src, p.glazingProgress.src], videoIds: ['opening-panels', 'window-walkthrough'],
+    description: 'Tall glazing divided into a clear grid, with outward-opening panels above fixed sections. The photographs and videos show the installation, the frame details and its connection to the terrace outside.',
+    scope: ['Tall glazed openings', 'Grid-pattern frames', 'Outward-opening panels', 'Glazing installation details'],
   },
   {
-    id: 'p8', slug: 'scandi-2bhk-hyderabad', title: 'Nordic-Inspired 2BHK', location: 'Hyderabad', propertyType: 'Apartment', areaSqft: 1100,
-    style: 'Scandinavian', budgetRange: '₹10 - 14 lakh', duration: '10 weeks', category: 'Apartment', cover: IMG.apt2,
-    gallery: [IMG.apt2, IMG.kitchen2, IMG.bedroom3, IMG.living6],
-    description: 'Pale woods and soft textiles maximise daylight in a north-facing apartment.',
-    scope: ['Space planning', 'Kitchen', 'Wardrobes', 'Decor'],
+    id: 'site-installations', slug: 'window-installation-site-journal', title: 'The work behind the finish',
+    category: 'Site Work', service: 'Home Renovation', style: 'Site journal', stage: 'Work in progress',
+    cover: p.wallPreparation.src, gallery: [p.wallPreparation.src, p.windowFitout.src, p.exterior.src],
+    description: 'A look at window installations and surrounding work during construction and renovation. This site journal includes wall preparation, interior fit-out and an exterior view before final finishing.',
+    scope: ['Window installation stages', 'Wall preparation', 'Interior fit-out coordination', 'Exterior glazing progress'],
   },
   {
-    id: 'p9', slug: 'family-duplex-chennai', title: 'Family Duplex', location: 'Chennai', propertyType: 'Independent House', areaSqft: 2100,
-    style: 'Warm & Earthy', budgetRange: '₹30 - 38 lakh', duration: '18 weeks', category: 'Villa', cover: IMG.house2,
-    gallery: [IMG.house2, IMG.living4, IMG.dining2, IMG.bedroom5],
-    description: 'A duplex with a double-height living space, timber staircase and warm material palette.',
-    scope: ['Complete interiors', 'Staircase detailing', 'Lighting'],
-  },
-  {
-    id: 'p10', slug: 'pantry-kitchen-delhi', title: 'Parallel Kitchen & Pantry', location: 'New Delhi', propertyType: 'Apartment', areaSqft: 180,
-    style: 'Modern', budgetRange: '₹7 - 9 lakh', duration: '5 weeks', category: 'Kitchen', cover: IMG.kitchen4,
-    gallery: [IMG.kitchen4, IMG.kitchen1, IMG.kitchen2],
-    description: 'A narrow kitchen rebuilt with tall pantry units, pull-outs and under-cabinet lighting.',
-    scope: ['Modular kitchen', 'Counter', 'Lighting'],
-  },
-  {
-    id: 'p11', slug: 'master-suite-makeover-jaipur', title: 'Master Suite Makeover', location: 'Jaipur', propertyType: 'Villa', areaSqft: 480,
-    style: 'Contemporary Luxury', budgetRange: '₹12 - 16 lakh', duration: '8 weeks', category: 'Renovation', cover: IMG.bedroom1,
-    gallery: [IMG.bedroom1, IMG.bedroom3, IMG.bath2, IMG.wardrobe],
-    description: 'A master bedroom, dressing room and en-suite refreshed with panelling, concealed lighting and a spa bath.',
-    scope: ['Bedroom joinery', 'Dressing room', 'Bathroom', 'Lighting'],
-  },
-  {
-    id: 'p12', slug: 'warm-minimal-3bhk-kolkata', title: 'Warm Minimal 3BHK', location: 'Kolkata', propertyType: 'Apartment', areaSqft: 1350,
-    style: 'Modern Minimalist', budgetRange: '₹16 - 20 lakh', duration: '13 weeks', category: 'Apartment', cover: IMG.living6,
-    gallery: [IMG.living6, IMG.kitchen5, IMG.bedroom4, IMG.dining2],
-    description: 'Neutral surfaces, concealed storage and a carefully lit gallery wall create a calm family home.',
-    scope: ['Space planning', 'Kitchen', 'Wardrobes', 'Lighting', 'Furniture'],
+    id: 'bathroom-details', slug: 'bathroom-window-and-finishing-details', title: 'Light, privacy & practical details',
+    category: 'Site Work', service: 'Plumbing & Electrical', style: 'Bathroom details', stage: 'Work in progress',
+    cover: p.bathroomWindow.src, gallery: [p.bathroomWindow.src, p.smallWindow.src, p.bathroomDetail.src],
+    description: 'Bathroom installation photographs showing frosted glazing, a compact tiled opening, ventilation and fittings. The images capture the space during the finishing stage.',
+    scope: ['Bathroom window details', 'Frosted glazing', 'Ventilation provision', 'Wall surfaces and fitting coordination'],
   },
 ];
 
-export const projectCategories = ['All', 'Apartment', 'Villa', 'Kitchen', 'Renovation', 'Office'] as const;
-export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProject = (slug: string) => projects.find(project => project.slug === slug);

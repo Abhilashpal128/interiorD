@@ -2,7 +2,12 @@
 // Reads project slugs and service ids from src/data and writes public/sitemap.xml + updates public/robots.txt
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const site = (process.env.SITE_URL ?? 'https://www.example.com').replace(/\/$/, '');
+if (!process.env.SITE_URL) throw new Error('Set SITE_URL to the confirmed public website URL before generating a sitemap.');
+const origin = new URL(process.env.SITE_URL);
+if (!['https:', 'http:'].includes(origin.protocol) || origin.username || origin.password || /(^|\.)example\.com$/.test(origin.hostname)) {
+  throw new Error('SITE_URL must be a real HTTP(S) website URL without credentials.');
+}
+const site = origin.origin;
 const slugs = [...readFileSync('src/data/projects.ts', 'utf8').matchAll(/slug: '([^']+)'/g)].map((m) => m[1]);
 const services = [...readFileSync('src/data/services.ts', 'utf8').matchAll(/^\s+id: '([^']+)'/gm)].map((m) => m[1]);
 const paths = ['/', '/privacy', '/terms', ...services.map((s) => `/services/${s}`), ...slugs.map((s) => `/projects/${s}`)];

@@ -27,6 +27,8 @@ export function PrivacyPage() {
       <p>This website does not currently use advertising or analytics cookies. If analytics is added, this policy and a cookie preference option will be updated.</p>
       <h2>Your choices</h2>
       <p>You may ask us to access, correct or delete your enquiry data by contacting <a className="underline" href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+      <h2>Business contact</h2>
+      <p>{company.name} · {contact.names}<br />{contact.addressLines.join(', ')}<br />{contact.phones.map((phone, index) => <span key={phone.tel}>{index > 0 && ' / '}<a className="underline" href={`tel:${phone.tel}`}>{phone.display}</a></span>)}</p>
     </Doc>
   );
 }
@@ -43,6 +45,7 @@ export function TermsPage() {
       <p>Submitting an enquiry does not create a contract. Services are provided only under a written agreement.</p>
       <h2>Contact</h2>
       <p>Questions about these terms: <a className="underline" href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+      <p>{company.name} · {contact.names}<br />{contact.addressLines.join(', ')}</p>
     </Doc>
   );
 }

@@ -8,7 +8,7 @@ import { normalizePhone } from '../utils/phone';
 import { ApiError, newIdempotencyKey, submitLead } from '../services/api';
 import { PROPERTY_TYPES, type EnquiryPrefill } from '../types';
 import { serviceNames } from '../data/services';
-import { budgetOptions, contact } from '../config/site';
+import { budgetOptions, contact, hasContactDetails } from '../config/site';
 
 interface Props {
   prefill: EnquiryPrefill;
@@ -97,7 +97,7 @@ export function EnquiryForm({ prefill, idPrefix, onDone, doneLabel = 'Close' }: 
         <CheckCircle2 className="mx-auto text-bronze" size={52} strokeWidth={1.4} />
         <h3 className="mt-4 font-serif text-3xl text-charcoal">Thank you, {done.name}</h3>
         <p className="mx-auto mt-3 max-w-sm text-ink/85">
-          We have received your enquiry and our team will review it. If you shared an email address, you will receive an acknowledgement.
+          S&amp;D Build Solutions has received your enquiry. Shailesh &amp; Dinesh will review the details you shared.
         </p>
         <p className="mt-4 text-sm text-taupe">
           Reference: <strong className="font-semibold text-charcoal">{done.leadId}</strong>
@@ -220,7 +220,7 @@ export function EnquiryForm({ prefill, idPrefix, onDone, doneLabel = 'Close' }: 
         <div role="alert" className="mt-4 flex items-start gap-2 border border-red-300 bg-red-50 p-3 text-sm text-red-900">
           <AlertCircle size={18} className="mt-0.5 shrink-0" />
           <span>
-            {serverError} You can also call us on <a className="font-semibold underline" href={`tel:${contact.phoneTel}`}>{contact.phoneDisplay}</a>.
+            {serverError}{hasContactDetails && <> You can also call us on <a className="font-semibold underline" href={`tel:${contact.phoneTel}`}>{contact.phoneDisplay}</a>.</>}
           </span>
         </div>
       )}
@@ -231,7 +231,7 @@ export function EnquiryForm({ prefill, idPrefix, onDone, doneLabel = 'Close' }: 
             <Loader2 size={18} className="animate-spin" aria-hidden /> Sending...
           </>
         ) : (
-          'Get My Free Consultation'
+          'Send enquiry'
         )}
       </button>
       <p className="mt-3 text-xs text-taupe">By submitting you agree to be contacted about your enquiry. See our <a className="underline" href="/privacy">Privacy Policy</a>.</p>

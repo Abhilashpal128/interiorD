@@ -7,6 +7,7 @@ export interface Service {
   short: string;
   long: string;
   image: string;
+  imageAlt: string;
   /** Visual size in the editorial grid */
   layout: 'tall' | 'wide' | 'square';
   highlights: string[];
@@ -15,14 +16,9 @@ export interface Service {
 }
 
 export type DesignCategory =
-  | 'Modern Minimalist'
-  | 'Contemporary Luxury'
-  | 'Warm & Earthy'
-  | 'Scandinavian'
-  | 'Indian Contemporary'
-  | 'Premium Modular Kitchens'
-  | 'Compact Apartments'
-  | 'Luxury Bedrooms';
+  | 'Living spaces'
+  | 'Furniture & storage'
+  | 'Windows & glazing';
 
 export type RoomKey = 'Kitchen' | 'Living room' | 'Bedroom' | 'Bathroom' | 'Full home';
 export type BudgetBand = 'Under 5L' | '5L - 10L' | '10L - 20L' | '20L+';
@@ -33,26 +29,28 @@ export interface DesignItem {
   title: string;
   category: DesignCategory;
   room: RoomKey;
-  style: StyleKey;
-  budget: BudgetBand;
+  service: string;
   image: string;
   gallery: string[];
   description: string;
   palette: string[];
-  materials: string[];
+  details: string[];
 }
 
 export interface Project {
   id: string;
   slug: string;
   title: string;
-  location: string;
-  propertyType: PropertyType;
-  areaSqft: number;
+  location?: string;
+  propertyType?: PropertyType;
+  areaSqft?: number;
   style: string;
-  budgetRange: string;
-  duration: string;
-  category: 'Apartment' | 'Villa' | 'Kitchen' | 'Renovation' | 'Office';
+  budgetRange?: string;
+  duration?: string;
+  category: 'Interiors' | 'Carpentry' | 'Windows & Glass' | 'Site Work';
+  service: string;
+  stage: string;
+  videoIds?: string[];
   cover: string;
   gallery: string[];
   description: string;

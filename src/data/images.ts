@@ -1,15 +1,14 @@
 /**
- * CENTRAL IMAGE LIBRARY
- * ---------------------
- * Every image used on the site is listed here. Replace a URL (or point it at /images/xyz.webp in client/public)
- * and every section that uses it updates automatically.
+ * LEGACY TEMPLATE IMAGE LIBRARY
+ * The active pages use client-supplied media from ./media.ts.
+ * These stock references are retained for unused template sections only.
  *
  * Current images are Unsplash photo IDs (Unsplash licence permits commercial use, attribution appreciated).
- * They are DEMO stock photos - swap in your own project photography before launch.
+ * They are DEMO stock photos, not S&D project photography.
  * If any URL fails to load, <SmartImage> shows /placeholder.svg instead of a broken image.
  */
-export const unsplash = (id: string, width = 1200): string =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=70`;
+// Locally stored stock photography makes the visual experience independent of a third-party host.
+export const unsplash = (id: string, _width = 1200): string => `/images/${id}.jpg`;
 
 export const IMG = {
   hero: unsplash('1600210492486-724fe5c67fb0', 1600),

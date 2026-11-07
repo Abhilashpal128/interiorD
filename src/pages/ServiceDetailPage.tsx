@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { Check } from 'lucide-react';
-import { services } from '../data/services';
+import { getService, services } from '../data/services';
 import { useSeo } from '../hooks/useSeo';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SmartImage } from '../components/SmartImage';
@@ -9,9 +9,9 @@ import NotFoundPage from './NotFoundPage';
 
 export default function ServiceDetailPage() {
   const { id = '' } = useParams();
-  const service = services.find((s) => s.id === id);
+  const service = getService(id);
   const { openEnquiry } = useEnquiry();
-  useSeo({ title: service?.title ?? 'Service not found', description: service?.short, path: `/services/${id}`, image: service?.image, noindex: !service });
+  useSeo({ title: service?.title ?? 'Service not found', description: service?.short, path: `/services/${service?.id ?? id}`, image: service?.image, noindex: !service });
   if (!service) return <NotFoundPage />;
   const others = services.filter((s) => s.id !== service.id).slice(0, 4);
 
@@ -29,7 +29,7 @@ export default function ServiceDetailPage() {
             <Link to="/#estimate" className="btn btn-outline">Try the budget estimator</Link>
           </div>
         </div>
-        <SmartImage src={service.image} alt={`${service.title} - example interior`} className="aspect-[4/5] w-full shadow-lift" width={1000} height={1250} priority sizes="(min-width:1024px) 45vw, 100vw" />
+        <SmartImage src={service.image} alt={service.imageAlt} className="aspect-[4/5] w-full shadow-lift" width={1000} height={1250} priority sizes="(min-width:1024px) 45vw, 100vw" />
       </div>
       <section className="mt-20" aria-labelledby="more-services"><h2 id="more-services" className="font-serif text-3xl">Other services</h2>
         <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{others.map((s) => <li key={s.id}><Link to={`/services/${s.id}`} className="block border border-line p-5 transition hover:border-charcoal"><span className="font-serif text-xl">{s.title}</span><span className="mt-1 block text-sm text-ink/75">{s.short}</span></Link></li>)}</ul>

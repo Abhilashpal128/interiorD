@@ -31,7 +31,7 @@ export function BudgetEstimator() {
   const request = () => {
     if (!result) return;
     openEnquiry({
-      service: scopeId === 'kitchen' ? 'Modular Kitchen Design' : scopeId === 'renovation' ? 'Home Renovation' : scopeId === 'full-home' ? 'Complete Home Interiors' : undefined,
+      service: scopeId === 'renovation' ? 'Home Renovation' : 'Interior Work',
       propertyType: propertyType as (typeof PROPERTY_TYPES)[number],
       propertySize: String(size),
       budget: budgetOptionFor((result.min + result.max) / 2),

@@ -30,10 +30,11 @@ export function useSeo({ title, description, path = '/', image, noindex, jsonLd 
     document.title = fullTitle;
     setMeta('meta[name="description"]', 'name', 'description', desc);
     setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle);
+    setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', company.name);
     setMeta('meta[property="og:description"]', 'property', 'og:description', desc);
     setMeta('meta[property="og:url"]', 'property', 'og:url', url);
     setMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
-    if (image) setMeta('meta[property="og:image"]', 'property', 'og:image', image);
+    if (image) setMeta('meta[property="og:image"]', 'property', 'og:image', new URL(image, company.siteUrl).href);
     setMeta('meta[name="robots"]', 'name', 'robots', noindex ? 'noindex,nofollow' : 'index,follow');
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');

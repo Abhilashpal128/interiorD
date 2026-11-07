@@ -1,0 +1,51 @@
+# Stock photography sources
+
+These illustrative photographs were already referenced by the original project. Local JPEG copies are used for reliable loading. They are not photographs of completed client projects. Replace them with approved business photography before launch.
+
+- 1600210492486-724fe5c67fb0.jpg: https://images.unsplash.com/photo-1600210492486-724fe5c67fb0
+- 1556909114-f6e7ad7d3136.jpg: https://images.unsplash.com/photo-1556909114-f6e7ad7d3136
+- 1586023492125-27b2c045efd7.jpg: https://images.unsplash.com/photo-1586023492125-27b2c045efd7
+- 1502672260266-1c1ef2d93688.jpg: https://images.unsplash.com/photo-1502672260266-1c1ef2d93688
+- 1600607687939-ce8a6c25118c.jpg: https://images.unsplash.com/photo-1600607687939-ce8a6c25118c
+- 1618221195710-dd6b41faaea6.jpg: https://images.unsplash.com/photo-1618221195710-dd6b41faaea6
+- 1555041469-a586c61ea9bc.jpg: https://images.unsplash.com/photo-1555041469-a586c61ea9bc
+- 1600566753086-00f18fb6b3ea.jpg: https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea
+- 1484154218962-a197022b5858.jpg: https://images.unsplash.com/photo-1484154218962-a197022b5858
+- 1556911220-bff31c812dba.jpg: https://images.unsplash.com/photo-1556911220-bff31c812dba
+- 1600489000022-c2086d79f9d4.jpg: https://images.unsplash.com/photo-1600489000022-c2086d79f9d4
+- 1600585152220-90363fe7e115.jpg: https://images.unsplash.com/photo-1600585152220-90363fe7e115
+- 1616594039964-ae9021a400a0.jpg: https://images.unsplash.com/photo-1616594039964-ae9021a400a0
+- 1540518614846-7eded433c457.jpg: https://images.unsplash.com/photo-1540518614846-7eded433c457
+- 1505693416388-ac5ce068fe85.jpg: https://images.unsplash.com/photo-1505693416388-ac5ce068fe85
+- 1560185127-6ed189bf02f4.jpg: https://images.unsplash.com/photo-1560185127-6ed189bf02f4
+- 1522771739844-6a9f6d5f14af.jpg: https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af
+- 1552321554-5fefe8c9ef14.jpg: https://images.unsplash.com/photo-1552321554-5fefe8c9ef14
+- 1584622650111-993a426fbf0a.jpg: https://images.unsplash.com/photo-1584622650111-993a426fbf0a
+- 1620626011761-996317b8d101.jpg: https://images.unsplash.com/photo-1620626011761-996317b8d101
+- 1600585154340-be6161a56a0c.jpg: https://images.unsplash.com/photo-1600585154340-be6161a56a0c
+- 1600596542815-ffad4c1539a9.jpg: https://images.unsplash.com/photo-1600596542815-ffad4c1539a9
+- 1564013799919-ab600027ffc6.jpg: https://images.unsplash.com/photo-1564013799919-ab600027ffc6
+- 1600607688969-a5bfcd646154.jpg: https://images.unsplash.com/photo-1600607688969-a5bfcd646154
+- 1493809842364-78817add7ffb.jpg: https://images.unsplash.com/photo-1493809842364-78817add7ffb
+- 1522708323590-d24dbb6b0267.jpg: https://images.unsplash.com/photo-1522708323590-d24dbb6b0267
+- 1512917774080-9991f1c4c750.jpg: https://images.unsplash.com/photo-1512917774080-9991f1c4c750
+- 1617806118233-18e1de247200.jpg: https://images.unsplash.com/photo-1617806118233-18e1de247200
+- 1600566752355-35792bedcfea.jpg: https://images.unsplash.com/photo-1600566752355-35792bedcfea
+- 1595428774223-ef52624120d2.jpg: https://images.unsplash.com/photo-1595428774223-ef52624120d2
+- 1513694203232-719a280e022f.jpg: https://images.unsplash.com/photo-1513694203232-719a280e022f
+- 1600573472592-401b489a3cdc.jpg: https://images.unsplash.com/photo-1600573472592-401b489a3cdc
+- 1618220179428-22790b461013.jpg: https://images.unsplash.com/photo-1618220179428-22790b461013
+- 1503387762-592deb58ef4e.jpg: https://images.unsplash.com/photo-1503387762-592deb58ef4e
+- 1541888946425-d81bb19240f5.jpg: https://images.unsplash.com/photo-1541888946425-d81bb19240f5
+- 1581094794329-c8112a89af12.jpg: https://images.unsplash.com/photo-1581094794329-c8112a89af12
+- 1497366216548-37526070297c.jpg: https://images.unsplash.com/photo-1497366216548-37526070297c
+- 1524758631624-e2822e304c36.jpg: https://images.unsplash.com/photo-1524758631624-e2822e304c36
+- 1615874959474-d609969a20ed.jpg: https://images.unsplash.com/photo-1615874959474-d609969a20ed
+- 1600121848594-d8644e57abab.jpg: https://images.unsplash.com/photo-1600121848594-d8644e57abab
+- 1583847268964-b28dc8f51f92.jpg: https://images.unsplash.com/photo-1583847268964-b28dc8f51f92
+- 1631679706909-1844bbd07221.jpg: https://images.unsplash.com/photo-1631679706909-1844bbd07221
+- 1615529328331-f8917597711f.jpg: https://images.unsplash.com/photo-1615529328331-f8917597711f
+- 1556909172-54557c7e4fb7.jpg: https://images.unsplash.com/photo-1556909172-54557c7e4fb7
+- 1581858726788-75bc0f6a952d.jpg: https://images.unsplash.com/photo-1581858726788-75bc0f6a952d
+- 1562259949-e8e7689d7828.jpg: https://images.unsplash.com/photo-1562259949-e8e7689d7828
+- 1560448204-e02f11c3d0e2.jpg: https://images.unsplash.com/photo-1560448204-e02f11c3d0e2

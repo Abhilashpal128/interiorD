@@ -22,7 +22,8 @@ function buildSrcSet(src: string): string | undefined {
 
 /** Lazy-loaded responsive image with a graceful fallback if the URL fails. */
 export function SmartImage({ src, alt, width = 1200, height = 800, className, style, priority, sizes = '(min-width: 1024px) 50vw, 100vw' }: SmartImageProps) {
-  const [failed, setFailed] = useState(false);
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const failed = failedSrc === src;
   const finalSrc = failed ? FALLBACK_IMAGE : src;
   return (
     <img
@@ -35,7 +36,7 @@ export function SmartImage({ src, alt, width = 1200, height = 800, className, st
       loading={priority ? 'eager' : 'lazy'}
       decoding="async"
       {...(priority ? { fetchPriority: 'high' as const } : {})}
-      onError={() => setFailed(true)}
+      onError={() => setFailedSrc(src)}
       className={`bg-sand object-cover ${className ?? ''}`}
       style={style}
     />
