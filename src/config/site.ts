@@ -1,6 +1,6 @@
 /**
  * Business details transcribed from the client-provided S&D Build Solutions card.
- * Project media is supplied by the client. Estimator rates remain indicative.
+ * Project media is supplied by the client.
  */
 import type { Stat } from '../types';
 
@@ -12,7 +12,7 @@ export const company = {
   logoMark: 'S&D',
   logoImage: '/images/sd-build-solutions-logo.png',
   logoImageLight: '/images/sd-build-solutions-logo.png',
-  description: 'S&D Build Solutions by Shailesh & Dinesh in Kandivali East, Mumbai. Construction, home renovation, interior work and specialist finishing services.',
+  description: 'S&D Build Solutions by Shailesh & Dinesh in Malad East, Mumbai. Construction, home renovation, interior work and specialist finishing services.',
   siteUrl: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '') ||
     (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:5173'),
 };
@@ -29,15 +29,15 @@ export const contact = {
   whatsappNumber: '',
   whatsappMessage: 'Hello S&D Build Solutions, I would like to discuss my project.',
   email: 'ishaileshpal@gmail.com',
-  addressLines: ['Kandivali (E), Lokhandwala', 'Mumbai - 400101'],
+  addressLines: ['Shiv Parvati Co-operative Housing Society', 'Anand Nagar, Appa Pada, Kurar Village', 'Malad East, Mumbai - 400097'],
   postalAddress: {
-    streetAddress: 'Kandivali (E), Lokhandwala',
+    streetAddress: 'Shiv Parvati Co-operative Housing Society, Anand Nagar, Appa Pada, Kurar Village, Malad East',
     addressLocality: 'Mumbai',
     addressRegion: 'Maharashtra',
-    postalCode: '400101',
+    postalCode: '400097',
     addressCountry: 'IN',
   },
-  mapQuery: 'Lokhandwala, Kandivali East, Mumbai 400101',
+  mapQuery: 'Shiv Parvati Co-operative Housing Society, Anand Nagar, Appa Pada, Kurar Village, Malad East, Mumbai 400097',
   // No opening hours were supplied on the card.
   hours: [] as Array<{ days: string; time: string }>,
 };
@@ -76,7 +76,7 @@ export const budgetOptions = ['Under ₹5 lakh', '₹5 - 10 lakh', '₹10 - 20 l
 
 export const seo = {
   defaultTitle: 'S&D Build Solutions | Construction, Renovation & Interiors in Mumbai',
-  defaultDescription: 'Contact Shailesh & Dinesh at S&D Build Solutions, Kandivali East, Mumbai, for construction, home renovation, interiors, carpentry, plumbing, electrical and finishing work.',
+  defaultDescription: 'Contact Shailesh & Dinesh at S&D Build Solutions, Malad East, Mumbai, for construction, home renovation, interiors, carpentry, plumbing, electrical and finishing work.',
   enableLocalBusinessSchema: true,
 };
 

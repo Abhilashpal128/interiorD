@@ -9,9 +9,9 @@ export function About() {
         <Reveal className="studio-intro">
           <p className="eyebrow"><span className="section-index">01 /</span> About S&amp;D</p>
           <div>
-            <p className="studio-location">Shailesh &amp; Dinesh · Kandivali East, Mumbai</p>
+            <p className="studio-location">Shailesh &amp; Dinesh · Malad East, Mumbai</p>
             <h2 id="about-title" className="h-section">A strong foundation.<br /><span className="muted-serif">A considered finish.</span></h2>
-            <div className="studio-copy"><p>{company.name} brings together construction, renovation and interior work. Based in Kandivali (E), Lokhandwala, we help you discuss the work your space needs, from civil work to its finishing touches.</p><p>Speak with {contact.names} about your project. Our services cover furniture and carpentry, plumbing and electrical, tile and stone work, aluminium, glass and uPVC, and painting and finishing.</p></div>
+            <div className="studio-copy"><p>{company.name} brings together construction, renovation and interior work. Based in Malad East, Mumbai, we help you discuss the work your space needs, from civil work to its finishing touches.</p><p>Speak with {contact.names} about your project. Our services cover furniture and carpentry, plumbing and electrical, tile and stone work, aluminium, glass and uPVC, and painting and finishing.</p></div>
             <a href="#contact" className="text-link">Talk to Shailesh &amp; Dinesh <ArrowUpRight size={19} /></a>
           </div>
         </Reveal>

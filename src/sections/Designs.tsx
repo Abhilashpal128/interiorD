@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight, Expand } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Expand, Pause, Play } from 'lucide-react';
 import { designCategories, designs } from '../data/designs';
 import type { DesignCategory, DesignItem } from '../types';
 import { SectionHeading } from '../components/SectionHeading';
@@ -8,12 +8,15 @@ import { Modal } from '../components/Modal';
 import { Reveal } from '../components/Reveal';
 import { useEnquiry } from '../context/EnquiryContext';
 import { photoAlt } from '../data/media';
+import { useAutoCarousel } from '../hooks/useAutoCarousel';
 
 export function Designs() {
   const [category, setCategory] = useState<DesignCategory | 'All'>('All');
   const [selected, setSelected] = useState<DesignItem | null>(null);
   const filtered = useMemo(() => (category === 'All' ? designs : designs.filter((d) => d.category === category)), [category]);
   const visible = filtered;
+  const { activeIndex, isPlaying, step, goTo, toggleAutoPlay, interactionHandlers } = useAutoCarousel(visible.length);
+  const design = visible[activeIndex]!;
 
   return (
     <section id="designs" aria-labelledby="designs-title" className="section bg-sand/40">
@@ -25,20 +28,38 @@ export function Designs() {
           ))}
         </div>
         <p className="sr-only" aria-live="polite">{visible.length} designs shown</p>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-testid="design-grid">
-          {visible.map((d, i) => (
-            <Reveal key={d.id} delay={(i % 3) * 0.05}>
-              <button type="button" onClick={() => setSelected(d)} className="group relative block w-full overflow-hidden text-left" aria-label={`View design: ${d.title}`}>
-                <SmartImage src={d.image} alt={photoAlt(d.image) ?? d.title} className="aspect-[4/5] w-full transition-transform duration-700 group-hover:scale-105" width={900} height={1125} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
-                <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/5 to-transparent opacity-90 transition-opacity group-hover:opacity-100" />
-                <span className="absolute inset-x-4 bottom-4 text-ivory">
-                  <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-sand">{d.category}</span>
-                  <span className="mt-1 flex items-center justify-between gap-3 font-serif text-2xl leading-tight">{d.title}<Expand size={18} aria-hidden className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100" /></span>
-                </span>
-              </button>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <div className="design-carousel" role="region" aria-label="Featured design ideas" aria-roledescription="carousel" {...interactionHandlers}>
+            <button type="button" onClick={() => setSelected(design)} className="design-carousel-image" data-testid="design-grid" aria-label={`View design: ${design.title}`}>
+              <SmartImage src={design.image} alt={photoAlt(design.image) ?? design.title} className="h-full w-full" width={1500} height={1000} sizes="(min-width: 1024px) 65vw, 100vw" />
+              <span aria-hidden className="design-carousel-shade" />
+              <span className="design-carousel-image-caption">
+                <span>{design.category}</span>
+                <strong>{design.title}</strong>
+                <Expand size={18} aria-hidden />
+              </span>
+            </button>
+            <div className="design-carousel-copy">
+              <p className="eyebrow">{design.category} <span className="section-index">{String(activeIndex + 1).padStart(2, '0')} / {String(visible.length).padStart(2, '0')}</span></p>
+              <h3>{design.title}</h3>
+              <p>{design.description}</p>
+              <div className="design-carousel-controls" role="group" aria-label="Design carousel controls">
+                <button type="button" aria-label="Previous design" onClick={() => step(-1)}><ChevronLeft size={18} /></button>
+                <button type="button" aria-label="Next design" onClick={() => step(1)}><ChevronRight size={18} /></button>
+                <button type="button" aria-label={isPlaying ? 'Pause design carousel' : 'Play design carousel'} aria-pressed={!isPlaying} onClick={toggleAutoPlay}>
+                  {isPlaying ? <Pause size={15} /> : <Play size={15} fill="currentColor" />}
+                </button>
+              </div>
+            </div>
+            <div className="design-carousel-thumbnails" role="group" aria-label="Choose a design">
+              {visible.map((item, index) => (
+                <button key={item.id} type="button" aria-label={`Show design: ${item.title}`} aria-current={index === activeIndex ? 'true' : undefined} onClick={() => goTo(index)}>
+                  <SmartImage src={item.image} alt="" width={180} height={120} sizes="(min-width: 768px) 12vw, 28vw" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
       <DesignModal design={selected} onClose={() => setSelected(null)} />
     </section>

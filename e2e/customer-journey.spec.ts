@@ -24,9 +24,10 @@ const fillForm = async (page: Page, scope: string) => {
 test('home page renders core sections without horizontal overflow', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  for (const id of ['services', 'designs', 'projects', 'walkthroughs', 'process', 'estimate', 'faq', 'contact']) {
+  for (const id of ['services', 'designs', 'projects', 'walkthroughs', 'process', 'faq', 'contact']) {
     await expect(page.locator(`#${id}`)).toHaveCount(1);
   }
+  await expect(page.locator('#estimate')).toHaveCount(0);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
 });
@@ -71,22 +72,41 @@ test('service CTA opens the enquiry modal with the service preselected', async (
   expect(received[0]).toMatchObject({ service: 'Interior Work', source: 'Service card: Interior Work' });
 });
 
-test('budget estimator updates and carries data into the enquiry', async ({ page }) => {
-  const received = await mockLeadApi(page);
-  await page.goto('/#estimate');
-  const before = await page.getByTestId('estimate-range').innerText();
-  await page.locator('#est-size').fill('2000');
-  await expect(page.getByTestId('estimate-range')).not.toHaveText(before);
-  await page.locator('#estimate').getByText('Luxury', { exact: true }).click();
-  await page.getByRole('button', { name: 'Request Detailed Quote' }).click();
-  const dialog = page.getByRole('dialog');
-  await expect(dialog.getByLabel('Property size (sq ft)')).toHaveValue('2000');
-  await dialog.getByLabel('Full name *').fill('Meera Shah');
-  await dialog.getByLabel('Phone number *').fill('9988776655');
-  await dialog.getByLabel('City / location *').fill('Surat');
-  await dialog.getByTestId('modal-submit').click();
-  await expect(dialog.getByTestId('enquiry-success')).toBeVisible();
-  expect(received[0]?.calculatorInputs).toMatchObject({ sizeSqft: 2000, finish: 'Luxury' });
+test('featured carousel advances automatically and can be paused', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/');
+  const heading = page.getByRole('heading', { level: 1 });
+  await expect(heading).toContainText('Spaces to live.');
+  await expect(page.locator('.hero-image')).toHaveCount(18);
+  await page.clock.runFor(3000);
+  await expect(heading).toContainText('Considered design.');
+
+  await page.getByRole('button', { name: 'Pause slideshow' }).click();
+  await page.clock.runFor(7000);
+  await expect(heading).toContainText('Considered design.');
+
+});
+
+test('reduced motion disables automatic carousel changes', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.clock.install();
+  await page.goto('/');
+  const heading = page.getByRole('heading', { level: 1 });
+  await expect(page.getByRole('button', { name: 'Play slideshow' })).toHaveAttribute('aria-pressed', 'true');
+  await page.clock.runFor(7000);
+  await expect(heading).toContainText('Spaces to live.');
+});
+
+test('featured work and design carousels advance every three seconds', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/');
+  const projectTitle = page.locator('.portfolio-carousel-slide.is-active h3 a');
+  await expect(projectTitle).toHaveText('Sculpted living & dining');
+  await expect(page.getByRole('button', { name: 'View design: A softer line in storage' })).toBeVisible();
+
+  await page.clock.runFor(3000);
+  await expect(projectTitle).toHaveText('Green, grain & quiet detail');
+  await expect(page.getByRole('button', { name: 'View design: Light that reveals the detail' })).toBeVisible();
 });
 
 test('project search and filters work, and detail pages load', async ({ page }) => {
@@ -126,15 +146,15 @@ test('FAQ toggles, unknown route 404s, and legal pages load', async ({ page }) =
   await expect(page.getByRole('heading', { name: 'Privacy Policy' })).toBeVisible();
 });
 
-test('all five supplied videos play on demand and stop when switching clips', async ({ page }) => {
+test('all eight supplied videos play on demand and stop when switching clips', async ({ page }) => {
   const requests: string[] = [];
   page.on('request', request => { if (/\.mp4(?:\?|$)/.test(request.url())) requests.push(request.url()); });
   await page.goto('/#walkthroughs');
   const section = page.locator('#walkthroughs');
   const choices = section.getByRole('group', { name: 'Choose a project video' }).getByRole('button');
-  await expect(choices).toHaveCount(5);
+  await expect(choices).toHaveCount(8);
   expect(requests).toHaveLength(0);
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 8; i++) {
     await choices.nth(i).click();
     await expect(section.locator('video')).toHaveCount(0);
     await section.getByRole('button', { name: /^Play video:/ }).click();
@@ -144,9 +164,9 @@ test('all five supplied videos play on demand and stop when switching clips', as
     await expect.poll(() => video.evaluate(el => (el as HTMLVideoElement).currentTime)).toBeGreaterThan(0);
     expect(await video.evaluate(el => (el as HTMLVideoElement).error)).toBeNull();
   }
-  expect(new Set(requests).size).toBe(5);
+  expect(new Set(requests).size).toBe(8);
   await section.getByRole('button', { name: 'Discuss a similar project' }).click();
-  await expect(page.getByRole('dialog').getByLabel('Service interested in *')).toHaveValue('Aluminium, Glass & uPVC Work');
+  await expect(page.getByRole('dialog').getByLabel('Service interested in *')).toHaveValue('Interior Work');
 });
 
 test('video load errors can be retried', async ({ page }) => {
@@ -209,8 +229,9 @@ test('business-card details, service options and branding are consistent', async
   await expect(contact.locator('a[href="tel:+919653196477"]')).toBeVisible();
   await expect(contact.locator('a[href="tel:+917676742197"]')).toBeVisible();
   await expect(contact.locator('a[href="mailto:ishaileshpal@gmail.com"]')).toBeVisible();
-  await expect(contact.locator('address')).toContainText('Kandivali (E), Lokhandwala');
-  await expect(contact.locator('address')).toContainText('Mumbai - 400101');
+  await expect(contact.locator('address')).toContainText('Shiv Parvati Co-operative Housing Society');
+  await expect(contact.locator('address')).toContainText('Anand Nagar, Appa Pada, Kurar Village');
+  await expect(contact.locator('address')).toContainText('Malad East, Mumbai - 400097');
   await expect(contact.getByLabel('Service interested in *').locator('option')).toHaveText([
     'Select a service', 'Construction & Civil Work', 'Home Renovation', 'Interior Work',
     'Tiles, Marble & Granite', 'Furniture & Carpentry', 'Plumbing & Electrical',
@@ -221,7 +242,7 @@ test('business-card details, service options and branding are consistent', async
   expect(await logo.evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
   const schema = await page.locator('script[data-seo-jsonld]').allTextContents();
   expect(schema.join(' ')).toContain('+917676742197');
-  expect(schema.join(' ')).toContain('400101');
+  expect(schema.join(' ')).toContain('400097');
   await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute('content', 'S&D Build Solutions');
   await page.goto('/services/modular-kitchen');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Interior Work');

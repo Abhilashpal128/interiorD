@@ -45,7 +45,7 @@ export function Header() {
           <nav aria-label="All pages">
             {nav.map((item, index) => <a key={item.id} href={item.id === 'home' ? '/#home' : `/#${item.id}`} onClick={closeMenu}><span>{String(index + 1).padStart(2, '0')}</span>{item.label}<ArrowUpRight size={25} /></a>)}
           </nav>
-          <a href="/#estimate" onClick={closeMenu} className="link-arrow mt-8">Plan your budget <ArrowUpRight size={17} /></a>
+          <a href="/#contact" onClick={closeMenu} className="link-arrow mt-8">Discuss your project <ArrowUpRight size={17} /></a>
           <div className="menu-contact"><p>{contact.names}</p><div>{contact.phones.map((phone) => <a key={phone.tel} href={`tel:${phone.tel}`}>{phone.display}</a>)}</div><a href={`mailto:${contact.email}`}>{contact.email}</a><p>{contact.addressLines.join(', ')}</p></div>
         </div>
       </Modal>

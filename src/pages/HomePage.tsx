@@ -8,7 +8,6 @@ import { Designs } from '../sections/Designs';
 import { Portfolio } from '../sections/Portfolio';
 import { Walkthroughs } from '../sections/Walkthroughs';
 import { Process } from '../sections/Process';
-import { BudgetEstimator } from '../sections/BudgetEstimator';
 import { FAQ } from '../sections/FAQ';
 import { About } from '../sections/About';
 import { Contact } from '../sections/Contact';
@@ -44,7 +43,6 @@ export default function HomePage() {
       <Services />
       <Process />
       <Designs />
-      <BudgetEstimator />
       <FAQ />
       <Contact />
     </>

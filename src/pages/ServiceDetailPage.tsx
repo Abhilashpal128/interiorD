@@ -26,7 +26,7 @@ export default function ServiceDetailPage() {
           <ul className="mt-6 space-y-3">{service.highlights.map((h) => <li key={h} className="flex gap-3"><Check size={18} className="mt-1 shrink-0 text-bronze" aria-hidden />{h}</li>)}</ul>
           <div className="mt-8 flex flex-wrap gap-3">
             <button type="button" className="btn btn-bronze" onClick={() => openEnquiry({ service: service.title, source: `Service page: ${service.title}` })}>Enquire about this service</button>
-            <Link to="/#estimate" className="btn btn-outline">Try the budget estimator</Link>
+            <Link to="/#contact" className="btn btn-outline">Discuss your project</Link>
           </div>
         </div>
         <SmartImage src={service.image} alt={service.imageAlt} className="aspect-[4/5] w-full shadow-lift" width={1000} height={1250} priority sizes="(min-width:1024px) 45vw, 100vw" />

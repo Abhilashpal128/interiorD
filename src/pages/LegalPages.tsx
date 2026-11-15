@@ -20,7 +20,7 @@ export function PrivacyPage() {
     <Doc title="Privacy Policy" path="/privacy">
       <p>{company.name} ("we") collects the details you submit in our enquiry and contact forms so that we can respond to your request.</p>
       <h2>Information we collect</h2>
-      <ul><li>Name, phone number, email address, city</li><li>Property type, size, service, budget and start date</li><li>Any message you choose to write</li><li>If you used the budget estimator, the selections you made</li></ul>
+      <ul><li>Name, phone number, email address, city</li><li>Property type, size, service, budget and start date</li><li>Any message you choose to write</li></ul>
       <h2>How we use it</h2>
       <p>We use your information to contact you about your enquiry, prepare consultations and quotations, and send an acknowledgement email if you provided an email address. Enquiries are stored securely and are visible to authorised staff.</p>
       <h2>Cookies and analytics</h2>
@@ -37,8 +37,8 @@ export function TermsPage() {
   return (
     <Doc title="Terms & Conditions" path="/terms">
       <p>By using this website you agree to these terms.</p>
-      <h2>Estimates</h2>
-      <p>Budget estimates on this website are indicative and illustrative. They are not quotations or offers. Final pricing is provided in a written quotation after consultation and site assessment.</p>
+      <h2>Quotations</h2>
+      <p>Any quotation is based on the scope, materials and site requirements agreed after consultation. Submitting an enquiry does not constitute a quotation or offer.</p>
       <h2>Content</h2>
       <p>Images, project names and testimonials may be illustrative. Designs shown are examples and individual results will vary.</p>
       <h2>Enquiries</h2>
