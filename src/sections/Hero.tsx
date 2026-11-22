@@ -47,7 +47,7 @@ export function Hero() {
       <div className="container-x hero-content">
         <p className="eyebrow !text-white/90"><span className="eyebrow-line" />{hero.eyebrow}</p>
         <h1 id="hero-title" className="hero-title">{slide.title}<br /><em>{slide.accent}</em></h1>
-        <p className="hero-description">{company.name} · Shailesh &amp; Dinesh<br />Malad East, Mumbai</p>
+        <p className="hero-description">{company.name} · Shailesh Gaurishankar Pal &amp; Dinesh Dalsingar Rajbhar<br />Malad East, Mumbai</p>
         <div className="hero-actions"><a href="#projects" className="hero-link">Explore our work <span><ArrowUpRight size={21} /></span></a><a href="#walkthroughs" className="hero-video-link"><Play size={14} fill="currentColor" /> Watch our walkthroughs</a></div>
       </div>
       <div className="container-x hero-bottom">

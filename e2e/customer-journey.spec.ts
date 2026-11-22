@@ -225,10 +225,10 @@ test('business-card details, service options and branding are consistent', async
   await page.goto('/#contact');
   await expect(page).toHaveTitle(/S&D Build Solutions/);
   const contact = page.locator('#contact');
-  await expect(contact.getByRole('heading', { name: 'Shailesh & Dinesh' })).toBeVisible();
+  await expect(contact.getByRole('heading', { name: 'Shailesh Gaurishankar Pal & Dinesh Dalsingar Rajbhar' })).toBeVisible();
   await expect(contact.locator('a[href="tel:+919653196477"]')).toBeVisible();
   await expect(contact.locator('a[href="tel:+917676742197"]')).toBeVisible();
-  await expect(contact.locator('a[href="mailto:ishaileshpal@gmail.com"]')).toBeVisible();
+  await expect(contact.locator('a[href="mailto:sndbuildsolution@gmail.com"]')).toBeVisible();
   await expect(contact.locator('address')).toContainText('Shiv Parvati Co-operative Housing Society');
   await expect(contact.locator('address')).toContainText('Anand Nagar, Appa Pada, Kurar Village');
   await expect(contact.locator('address')).toContainText('Malad East, Mumbai - 400097');
@@ -247,6 +247,6 @@ test('business-card details, service options and branding are consistent', async
   await page.goto('/services/modular-kitchen');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Interior Work');
   await page.goto('/privacy');
-  await expect(page.locator('main')).toContainText('ishaileshpal@gmail.com');
+  await expect(page.locator('main')).toContainText('sndbuildsolution@gmail.com');
   await expect(page.locator('main')).toContainText('S&D Build Solutions');
 });

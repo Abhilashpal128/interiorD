@@ -48,7 +48,7 @@ export function RoomSelector() {
         {results.length === 0 ? (
           <div className="mt-4 border border-dashed border-line p-10 text-center">
             <p className="font-serif text-2xl">Tell us what you have in mind</p>
-            <p className="mx-auto mt-2 max-w-md text-ink/80">We have no photographs of this room type in the current collection. Share your requirements with Shailesh &amp; Dinesh.</p>
+            <p className="mx-auto mt-2 max-w-md text-ink/80">We have no photographs of this room type in the current collection. Share your requirements with Shailesh Gaurishankar Pal &amp; Dinesh Dalsingar Rajbhar.</p>
           </div>
         ) : (
           <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -97,7 +97,7 @@ export function EnquiryForm({ prefill, idPrefix, onDone, doneLabel = 'Close' }: 
         <CheckCircle2 className="mx-auto text-bronze" size={52} strokeWidth={1.4} />
         <h3 className="mt-4 font-serif text-3xl text-charcoal">Thank you, {done.name}</h3>
         <p className="mx-auto mt-3 max-w-sm text-ink/85">
-          S&amp;D Build Solutions has received your enquiry. Shailesh &amp; Dinesh will review the details you shared.
+          S&amp;D Build Solutions has received your enquiry. Shailesh Gaurishankar Pal &amp; Dinesh Dalsingar Rajbhar will review the details you shared.
         </p>
         <p className="mt-4 text-sm text-taupe">
           Reference: <strong className="font-semibold text-charcoal">{done.leadId}</strong>

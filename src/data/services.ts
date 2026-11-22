@@ -7,7 +7,7 @@ export const services: Service[] = [
     id: 'construction-civil-work',
     title: 'Construction & Civil Work',
     short: 'Construction and civil work for your next building or improvement project.',
-    long: 'Discuss your construction and civil work requirements with Shailesh & Dinesh. Share the site details, drawings if available, and the scope you have in mind so the work can be assessed for your property.',
+    long: 'Discuss your construction and civil work requirements with Shailesh Gaurishankar Pal & Dinesh Dalsingar Rajbhar. Share the site details, drawings if available, and the scope you have in mind so the work can be assessed for your property.',
     image: p.exterior.src, imageAlt: p.exterior.alt, layout: 'wide',
     highlights: ['Construction work', 'Civil work', 'Site requirements', 'Project scope and quotation'],
   },

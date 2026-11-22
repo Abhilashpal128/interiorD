@@ -71,7 +71,7 @@ export default function ProjectDetailPage() {
           <h2 className="mt-6 font-serif text-2xl">Details in this collection</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-ink/85">{project.scope.map((s) => <li key={s}>{s}</li>)}</ul>
           <button type="button" className="btn btn-bronze mt-8 w-full" onClick={() => openEnquiry(projectEnquiry(project, 'Project page'))}>Plan a Similar Project</button>
-          <p className="mt-3 text-sm leading-relaxed text-taupe">Speak with Shailesh &amp; Dinesh about the measurements, materials and quotation for your own space.</p>
+          <p className="mt-3 text-sm leading-relaxed text-taupe">Speak with Shailesh Gaurishankar Pal &amp; Dinesh Dalsingar Rajbhar about the measurements, materials and quotation for your own space.</p>
         </aside>
       </div>
 

@@ -32,7 +32,7 @@ export function LeadCapture() {
           </a>
         </Reveal>
         <Reveal delay={0.1} className="bg-ivory p-6 shadow-lift sm:p-9">
-          <h3 className="mb-5 font-serif text-3xl text-charcoal">Speak with Shailesh & Dinesh</h3>
+          <h3 className="mb-5 font-serif text-3xl text-charcoal">Speak with Shailesh Gaurishankar Pal & Dinesh Dalsingar Rajbhar</h3>
           <EnquiryForm prefill={{ source: 'Lead capture form (home)' }} idPrefix="lead" />
         </Reveal>
       </div>
