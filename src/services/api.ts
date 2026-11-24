@@ -1,6 +1,6 @@
 import type { CalculatorInputs } from '../types';
 
-const BASE_URL = 'https://sndserver-jet.vercel.app'.replace(/\/$/, '');
+const BASE_URL = 'https://sndserver-jet.vercel.app';
 
 export class ApiError extends Error {
   constructor(
