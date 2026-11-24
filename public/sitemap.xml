@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Set SITE_URL and run npm run sitemap after the business domain is confirmed. -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" />
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://sndbuildsolutions.com/</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/privacy</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/terms</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/construction-civil-work</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/home-renovation</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/interior-work</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/tiles-marble-granite</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/furniture-carpentry</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/plumbing-electrical</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/aluminium-glass-upvc</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/services/painting-finishing</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/sculpted-living-and-dining</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/green-and-grain-bedroom</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/teal-storage-compact-lounge</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/panoramic-sliding-windows</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/custom-beds-and-bedside-details</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/wardrobe-and-dressing-niche</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/grid-glazing-and-opening-panels</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/window-installation-site-journal</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://sndbuildsolutions.com/projects/bathroom-window-and-finishing-details</loc><lastmod>2026-11-24</lastmod></url>
+</urlset>

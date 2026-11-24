@@ -1,6 +1,6 @@
 import type { CalculatorInputs } from '../types';
 
-const BASE_URL = ((import.meta.env.VITE_API_URL as string | undefined) ?? '').replace(/\/$/, '');
+const BASE_URL = ((import.meta.env.VITE_API_URL as string | undefined) ?? '').trim().replace(/\/+$/, '');
 
 export class ApiError extends Error {
   constructor(
@@ -63,7 +63,8 @@ export async function request<T>(path: string, init: RequestInit = {}, timeoutMs
 
 /** The ONE function every enquiry form uses to submit a lead. */
 export function submitLead(payload: LeadPayload): Promise<LeadResponse> {
-  return request<LeadResponse>('/api/leads', { method: 'POST', body: JSON.stringify(payload) });
+  // Gmail SMTP can take longer than ordinary API requests, especially on a cold start.
+  return request<LeadResponse>('/api/leads', { method: 'POST', body: JSON.stringify(payload) }, 65000);
 }
 
 export function newIdempotencyKey(): string {

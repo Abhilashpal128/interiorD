@@ -22,7 +22,7 @@ export function PrivacyPage() {
       <h2>Information we collect</h2>
       <ul><li>Name, phone number, email address, city</li><li>Property type, size, service, budget and start date</li><li>Any message you choose to write</li></ul>
       <h2>How we use it</h2>
-      <p>We use your information to contact you about your enquiry, prepare consultations and quotations, and send an acknowledgement email if you provided an email address. Enquiries are stored securely and are visible to authorised staff.</p>
+      <p>We use your information to contact you about your enquiry and prepare consultations and quotations. Your enquiry is emailed to our business inbox so our team can review it and respond.</p>
       <h2>Cookies and analytics</h2>
       <p>This website does not currently use advertising or analytics cookies. If analytics is added, this policy and a cookie preference option will be updated.</p>
       <h2>Your choices</h2>

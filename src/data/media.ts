@@ -36,7 +36,7 @@ import wardrobeBedroomStorage from '../assets/wardrobe-bedroom-storage.jpg';
 import wardrobeGlassFront from '../assets/wardrobe-glass-front.jpg';
 import loungeVideo from '../assets/compact-lounge-carpentry-walkthrough.mp4';
 import livingVideo from '../assets/living-dining-interior-walkthrough.mp4';
-import finishingVideo from '../assets/home-interior-finishing-walkthrough.mp4';
+import finishingVideo from '../assets/home-interior-finishing-walkthrough-optimized.mp4';
 import panelsVideo from '../assets/grid-glazing-opening-panels.mp4';
 import glazingVideo from '../assets/grid-glazing-window-walkthrough.mp4';
 import mediaWallVideo from '../assets/interior-media-wall-walkthrough.mp4';
