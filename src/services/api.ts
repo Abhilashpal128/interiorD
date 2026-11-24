@@ -1,6 +1,6 @@
 import type { CalculatorInputs } from '../types';
 
-const BASE_URL = ((import.meta.env.VITE_API_URL as string | undefined) ?? '').replace(/\/$/, '');
+const BASE_URL = 'https://sndserver-jet.vercel.app'.replace(/\/$/, '');
 
 export class ApiError extends Error {
   constructor(
@@ -36,7 +36,11 @@ export interface LeadResponse {
   duplicate: boolean;
 }
 
-export async function request<T>(path: string, init: RequestInit = {}, timeoutMs = 20000): Promise<T> {
+export async function request<T>(
+  path: string,
+  init: RequestInit = {},
+  timeoutMs = 20000,
+): Promise<T> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -45,16 +49,23 @@ export async function request<T>(path: string, init: RequestInit = {}, timeoutMs
       signal: controller.signal,
       headers: { 'Content-Type': 'application/json', ...(init.headers ?? {}) },
     });
-    const body = (await res.json().catch(() => null)) as
-      | { success: boolean; data?: T; error?: { message?: string; fields?: Record<string, string> } }
-      | null;
+    const body = (await res.json().catch(() => null)) as {
+      success: boolean;
+      data?: T;
+      error?: { message?: string; fields?: Record<string, string> };
+    } | null;
     if (!res.ok || !body?.success) {
-      throw new ApiError(body?.error?.message ?? 'Something went wrong. Please try again.', res.status, body?.error?.fields);
+      throw new ApiError(
+        body?.error?.message ?? 'Something went wrong. Please try again.',
+        res.status,
+        body?.error?.fields,
+      );
     }
     return body.data as T;
   } catch (err) {
     if (err instanceof ApiError) throw err;
-    if ((err as Error).name === 'AbortError') throw new ApiError('The request timed out. Please check your connection and try again.', 0);
+    if ((err as Error).name === 'AbortError')
+      throw new ApiError('The request timed out. Please check your connection and try again.', 0);
     throw new ApiError('Could not reach the server. Please check your connection or call us.', 0);
   } finally {
     clearTimeout(timer);
