@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    // In development, /api is proxied to mail-server (npm run dev in that folder).
+    // In development, /api is proxied to the Express server so no CORS setup is needed locally
     proxy: { '/api': { target: 'http://localhost:5000', changeOrigin: true } },
   },
   build: {

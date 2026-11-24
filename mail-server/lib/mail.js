@@ -51,18 +51,14 @@ export async function sendEnquiry(lead, leadId) {
     dnsTimeout: 10000,
     pool: false,
   });
-  let timer;
+  const controller = new AbortController();
+  // Leave response time within the deployed frontend's existing 20-second timeout.
+  const timer = setTimeout(() => controller.abort(), 15000);
   try {
-    // Finish before Vercel's function deadline and the frontend's request timeout.
-    const result = await Promise.race([
-      transport.sendMail(buildMessage(lead, leadId, sender)),
-      new Promise((_, reject) => {
-        timer = setTimeout(() => {
-          transport.close();
-          reject(Object.assign(new Error('Mail delivery timed out'), { code: 'ETIMEDOUT' }));
-        }, 40000);
-      }),
-    ]);
+    const result = await transport.sendMail({
+      ...buildMessage(lead, leadId, sender),
+      signal: controller.signal,
+    });
     if (!result.accepted?.some((address) => String(address).toLowerCase() === RECIPIENT)) {
       throw Object.assign(new Error('Recipient was not accepted'), { code: 'ERECIPIENT' });
     }

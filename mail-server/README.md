@@ -1,10 +1,10 @@
 # S&D Build Solutions mail API
 
-Standalone Node.js + Nodemailer backend for the existing website. `POST /api/leads` emails enquiries to **sndbuildsolution@gmail.com**. No database is required. The existing contact form, enquiry modal and calculator all use this endpoint.
+Standalone Node.js + Nodemailer backend for the already deployed website. Deploy only this folder as a separate Vercel project. `POST /api/leads` emails enquiries to **sndbuildsolution@gmail.com**. No database is required. The endpoint matches the existing contact form, enquiry modal and calculator API contract.
 
 ## Quick Vercel deployment
 
-1. Import this repository as a **new Vercel project**. Set **Root Directory** to the folder containing this README: `client/mail-server` if the repository root contains `client/`, or `mail-server` if the repository is already the client folder.
+1. Import this repository as a **new Vercel project**. Set **Root Directory** to `mail-server` (this Git repository's root is the client folder).
 2. Choose **Other** as the framework. Use Node.js **24.x**, the included build command (`npm run check`), and leave the Output Directory override disabled. The files in `api/` become Node.js functions; do not deploy `dist/` or run `npm start` as a build command.
 3. Add these environment variables to the **backend project**, then deploy:
 
@@ -16,8 +16,10 @@ Standalone Node.js + Nodemailer backend for the existing website. `POST /api/lea
 
    Multiple origins can be comma separated, e.g. `https://your-website.com,https://www.your-website.com`. Include the origin visitors actually use. No paths or wildcards. A trailing slash is accepted. Put secrets directly in Vercel; never commit them or use `VITE_` for a secret.
 4. Open `https://YOUR-BACKEND.vercel.app/api/health`. `emailConfigured: true` means the credential variables are present; it does **not** test Gmail authentication or delivery.
-5. In the **frontend hosting project**, set `VITE_API_URL=https://YOUR-BACKEND.vercel.app`, with no `/api` or `/api/leads` suffix. Rebuild/redeploy the frontend because Vite embeds this value during the build.
-6. Submit a real enquiry through the website. Confirm the success reference appears and check the recipient's inbox/spam folder. The backend returns success only after Gmail's SMTP server accepts the message; inbox placement is controlled by Gmail.
+
+Your frontend stays on its current host. Once the backend URL is available, the existing website needs to send requests to `https://YOUR-BACKEND.vercel.app/api/leads`. If it already points there, no frontend deployment is needed. Otherwise, change its existing `VITE_API_URL` setting to the backend base URL (without `/api` or `/api/leads`) and rebuild that existing deployment; Vite embeds the URL at build time.
+
+After connecting the URL, submit an enquiry through the website. Confirm the success reference appears and check the recipient's inbox/spam folder. The backend returns success only after Gmail's SMTP server accepts the message; inbox placement is controlled by Gmail. SMTP operations are cancelled after 15 seconds to leave response time within the existing frontend's 20-second request timeout.
 
 The production API must be publicly reachable by site visitors. If Vercel Deployment Protection returns a login page for the backend, allow public access to the production API in the project settings. Preview URLs may have different protection settings.
 
@@ -36,13 +38,7 @@ Copy-Item .env.example .env
 npm run dev
 ```
 
-In a second terminal, from the frontend folder:
-
-```powershell
-npm run dev
-```
-
-Leave the frontend `VITE_API_URL` empty locally. Vite proxies `/api` to port 5000. Run only one backend on that port; the older database-backed `server/` project also uses port 5000.
+The backend runs at `http://localhost:5000`; check `http://localhost:5000/api/health` in your browser. Run only one backend on that port; the older database-backed `server/` project also uses port 5000.
 
 ## Checks
 

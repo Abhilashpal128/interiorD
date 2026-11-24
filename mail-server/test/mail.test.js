@@ -35,7 +35,7 @@ test('email is optional and credentials are required', () => {
   assert.equal(mailConfigured({ GMAIL_USER: 'sender@gmail.com', GMAIL_APP_PASSWORD: 'example-test-password' }), true);
 });
 
-test('Gmail transport uses server credentials and requires recipient acceptance', async (t) => {
+test('Gmail transport authenticates, checks acceptance and cancels timed-out delivery', async (t) => {
   const oldUser = process.env.GMAIL_USER;
   const oldPassword = process.env.GMAIL_APP_PASSWORD;
   process.env.GMAIL_USER = 'sender@gmail.com';
@@ -47,13 +47,21 @@ test('Gmail transport uses server credentials and requires recipient acceptance'
     else process.env.GMAIL_APP_PASSWORD = oldPassword;
   });
   let accepted = [RECIPIENT];
+  let stalled = false;
   let closed = 0;
   t.mock.method(nodemailer, 'createTransport', (options) => {
     assert.equal(options.service, 'gmail');
     assert.equal(options.auth.user, 'sender@gmail.com');
     assert.equal(options.auth.pass, 'testpasswordonly');
     return {
-      sendMail: async (message) => { assert.equal(message.to, RECIPIENT); return { accepted }; },
+      sendMail: async (message) => {
+        assert.equal(message.to, RECIPIENT);
+        assert.ok(message.signal instanceof AbortSignal);
+        if (stalled) return new Promise((_, reject) => {
+          message.signal.addEventListener('abort', () => reject(Object.assign(new Error('Aborted'), { code: 'ABORT_ERR' })), { once: true });
+        });
+        return { accepted };
+      },
       close: () => { closed += 1; },
     };
   });
@@ -61,4 +69,10 @@ test('Gmail transport uses server credentials and requires recipient acceptance'
   accepted = [];
   await assert.rejects(sendEnquiry(lead, 'SND-12345678'), { code: 'ERECIPIENT' });
   assert.equal(closed, 2);
+  stalled = true;
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  const cancellation = assert.rejects(sendEnquiry(lead, 'SND-12345678'), { code: 'ABORT_ERR' });
+  t.mock.timers.tick(15000);
+  await cancellation;
+  assert.equal(closed, 3);
 });
